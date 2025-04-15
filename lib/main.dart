@@ -1,7 +1,10 @@
 
-import 'package:besta/core/utils/assets.dart';
+import 'package:besta/core/functions/on_generat_route.dart';
+
+import 'package:besta/core/utils/constants.dart';
+import 'package:besta/feature/splash/presentation/splash_view.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
+
 
 
 void main() {
@@ -14,9 +17,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: Center(child: Lottie.asset(Assets.imagesOnBoarding1, width: 200)),
+      theme: ThemeData(
+        scaffoldBackgroundColor: AppColors.backgroundColor,
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
+        fontFamily: 'Cairo'
       ),
+      debugShowCheckedModeBanner: false,
+      onGenerateRoute: onGenerateRoute,
+      initialRoute: SplashView.routeName,
     );
   }
 }
