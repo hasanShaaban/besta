@@ -29,6 +29,8 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.8
+  flutter_localizations:
+    sdk: flutter
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.17
@@ -101,3 +103,5 @@ flutter_assets:
   output_path: lib/core/utils
   filename: assets.dart
   field_prefix: null
+flutter_intl:
+  enabled: true

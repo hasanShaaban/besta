@@ -5,6 +5,11 @@ class OnBoardingViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Text('asdf')
+      ],
+    );
   }
 }
