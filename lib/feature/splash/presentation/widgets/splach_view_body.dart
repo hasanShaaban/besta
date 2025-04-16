@@ -1,5 +1,7 @@
 import 'package:besta/core/utils/assets.dart';
+import 'package:besta/feature/on_boarding/presentation/on_boarding_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gif/gif.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -9,43 +11,59 @@ class SplashViewBody extends StatefulWidget {
   State<SplashViewBody> createState() => _SplashViewBodyState();
 }
 
-class _SplashViewBodyState extends State<SplashViewBody>
-    with TickerProviderStateMixin {
-
-      late GifController _gifController;
-      bool _moveLeft = false;
-
-      @override
+class _SplashViewBodyState extends State<SplashViewBody> with TickerProviderStateMixin{
+  bool _slideLeft = false;
+  bool _showText = false;
+  @override
   void initState() {
     super.initState();
-    _gifController = GifController(vsync: this);
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _gifController.animateTo(10, duration: const Duration(seconds: 2)).whenComplete((){
+    Future.delayed(const Duration(seconds: 7), () {
+      setState(() {
+        _slideLeft = true;
+      });
+      Future.delayed(const Duration(milliseconds: 600), () {
         setState(() {
-          _moveLeft = true;
+          _showText = true;
         });
       });
     });
   }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _gifController.dispose();
-  }
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: AnimatedAlign(
-        alignment: _moveLeft? Alignment.centerLeft : Alignment.center,
-        duration: const Duration(seconds: 1),
-        curve: Curves.easeOut,
-        child: Gif(
-          width: 100,
-          image: const AssetImage(Assets.imagesLogo),
-          controller: _gifController,
-          autostart: Autostart.once,
-        ),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Positioned(
+            left: MediaQuery.of(context).size.width * 0.48,
+            child: AnimatedOpacity(
+              curve: Curves.easeInCubic,
+              duration: const Duration(milliseconds: 1000),
+              onEnd: () {
+                Future.delayed(const Duration(seconds: 1), (){
+                  Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
+                });
+              },
+              opacity: _showText ? 1.0 : 0.0,
+              child: SvgPicture.asset(
+                Assets.iconsEsta, // Replace with your actual asset path
+                height: 61,
+              ),
+            ),
+          ),
+          AnimatedAlign(
+            duration: const Duration(milliseconds: 800),
+            curve: Curves.easeInCirc,
+            alignment: _slideLeft ? const Alignment(-0.5, 0) : Alignment.center,
+            child: Gif(
+              image: const AssetImage(Assets.imagesLogo),
+              autostart: Autostart.once,
+              height: 250,
+              width: _slideLeft? 120 : 250,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ],
       ),
     );
   }
