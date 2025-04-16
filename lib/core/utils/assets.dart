@@ -14,6 +14,10 @@ class Assets {
   /// assets/icons/basta_logo.png
   static const String iconsBastaLogo = "assets/icons/basta_logo.png";
 
+  /// Assets for iconsBesta
+  /// assets/icons/besta.svg
+  static const String iconsBesta = "assets/icons/besta.svg";
+
   /// Assets for iconsEnvelope
   /// assets/icons/envelope.svg
   static const String iconsEnvelope = "assets/icons/envelope.svg";
