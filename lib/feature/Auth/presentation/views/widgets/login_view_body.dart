@@ -2,7 +2,9 @@ import 'package:besta/core/utils/app_text_style.dart';
 import 'package:besta/core/utils/assets.dart';
 import 'package:besta/core/utils/constants.dart';
 import 'package:besta/core/widgets/skip_button.dart';
+import 'package:besta/feature/Auth/presentation/views/signup_view.dart';
 import 'package:besta/feature/Auth/presentation/views/widgets/auth_header.dart';
+import 'package:besta/feature/Auth/presentation/views/widgets/auth_redirect_text.dart';
 import 'package:besta/feature/Auth/presentation/views/widgets/custom_auth_btton.dart';
 import 'package:besta/feature/Auth/presentation/views/widgets/custom_text_form_field.dart';
 import 'package:besta/feature/Auth/presentation/views/widgets/google_button.dart';
@@ -46,33 +48,22 @@ class LoginViewBody extends StatelessWidget {
                   SvgPicture.asset(Assets.iconsPassword, width: 24, height: 22),
             ),
             const SizedBox(height: 18),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'لا تمتلك حساب؟ يمكنك انشاء',
-                  style: AppTextStyle.cairoRegular14
-                      .copyWith(color: AppColors.primaryColor),
-                ),
-                GestureDetector(
-                  child: Text(
-                    ' حساب جديد',
-                    style: AppTextStyle.cairoRegular14
-                        .copyWith(color: AppColors.thirdColor),
-                  ),
-                )
-              ],
+            AuthRedirectText(
+              staitcText: 'لا تمتلك حساب؟ يمكنك انشاء',
+              redirectorText: ' حساب جديد',
+              onTap: () {
+                Navigator.pushNamed(context, SignupView.routeName);
+              },
             ),
             const SizedBox(height: 30),
             CustomAuthButton(onPressed: () {}),
             const SizedBox(height: 18),
             const OrDivider(),
             const SizedBox(height: 23),
-            GoogleButton(onPressed: (){})
+            GoogleButton(onPressed: () {})
           ],
         ),
       ),
     );
   }
 }
-
