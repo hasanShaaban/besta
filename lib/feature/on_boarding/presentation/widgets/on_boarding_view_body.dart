@@ -1,10 +1,11 @@
 import 'package:besta/core/utils/app_text_style.dart';
 import 'package:besta/core/utils/assets.dart';
 import 'package:besta/core/utils/constants.dart';
+import 'package:besta/core/widgets/skip_button.dart';
+import 'package:besta/feature/Auth/presentation/views/Login_view.dart';
 import 'package:besta/feature/on_boarding/presentation/widgets/animated_shape.dart';
 import 'package:besta/feature/on_boarding/presentation/widgets/on_boarding_dots_indecators.dart';
 import 'package:besta/feature/on_boarding/presentation/widgets/on_boarding_page.dart';
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -42,15 +43,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TextButton(
-          onPressed: () {},
-          child: Text(
-            'تخط',
-            style: AppTextStyle.cairoRegular16.copyWith(
-                color: AppColors.deviderColor,
-                decoration: TextDecoration.underline),
-          ),
-        ),
+        const SkipButton(),
         const SizedBox(height: 65),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -116,7 +109,9 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                       backgroundColor: AppColors.primaryColor,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(32))),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, LoginView.routeName);
+                  },
                   child: Text(
                     'ابدأ الأن',
                     style: AppTextStyle.cairoBold18
@@ -129,3 +124,4 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
     );
   }
 }
+
