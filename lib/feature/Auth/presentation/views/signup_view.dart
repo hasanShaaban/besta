@@ -1,3 +1,4 @@
+import 'package:besta/feature/Auth/presentation/views/widgets/signup_view_body.dart';
 import 'package:flutter/material.dart';
 
 class SignupView extends StatelessWidget {
@@ -5,15 +6,9 @@ class SignupView extends StatelessWidget {
   static const routeName = 'signup';
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(child: Scaffold(body: SignupViewBody(),));
-  }
-}
-
-class SignupViewBody extends StatelessWidget {
-  const SignupViewBody({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
+    return const SafeArea(
+        child: Scaffold(
+      body: SignupViewBody(),
+    ));
   }
 }

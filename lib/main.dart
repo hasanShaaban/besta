@@ -2,11 +2,17 @@ import 'package:besta/core/functions/on_generat_route.dart';
 
 import 'package:besta/core/utils/constants.dart';
 import 'package:besta/feature/splash/presentation/splash_view.dart';
+import 'package:besta/firebase_options.dart';
 import 'package:besta/generated/l10n.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -16,14 +22,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      localizationsDelegates:const [
+      localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      locale:const Locale('ar'),
+      locale: const Locale('ar'),
       theme: ThemeData(
           scaffoldBackgroundColor: AppColors.backgroundColor,
           colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
