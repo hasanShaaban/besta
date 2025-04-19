@@ -1,4 +1,6 @@
 import 'package:besta/core/functions/on_generat_route.dart';
+import 'package:besta/core/services/custom_bloc_observer.dart';
+import 'package:besta/core/services/get_it_service.dart';
 
 import 'package:besta/core/utils/constants.dart';
 import 'package:besta/feature/splash/presentation/splash_view.dart';
@@ -6,13 +8,16 @@ import 'package:besta/firebase_options.dart';
 import 'package:besta/generated/l10n.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = CustomBlocObserver();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  setupGetit();
   runApp(const MyApp());
 }
 
