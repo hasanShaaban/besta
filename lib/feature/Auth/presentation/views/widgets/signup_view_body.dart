@@ -7,6 +7,7 @@ import 'package:besta/feature/Auth/presentation/views/widgets/auth_header.dart';
 import 'package:besta/feature/Auth/presentation/views/widgets/auth_redirect_text.dart';
 import 'package:besta/feature/Auth/presentation/views/widgets/custom_auth_btton.dart';
 import 'package:besta/feature/Auth/presentation/views/widgets/custom_text_form_field.dart';
+import 'package:besta/feature/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -38,7 +39,10 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               Row(
                 children: [
                   SkipButton(
-                    onpressed: () {},
+                    onpressed: () {
+                      Navigator.of(context)
+                          .pushReplacementNamed(HomeView.routeName);
+                    },
                   ),
                   const Spacer(),
                   const CustomBackButton(

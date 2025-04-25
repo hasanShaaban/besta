@@ -110,4 +110,5 @@ class AuthRepoImpl extends AuthRepo {
       await firebaseAuthService.deleteUser();
     }
   }
+
 }

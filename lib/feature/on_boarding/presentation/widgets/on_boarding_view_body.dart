@@ -55,8 +55,11 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SkipButton(
-          onpressed: () => skipOnBoarding(LoginView.routeName),
+        Padding(
+          padding: const EdgeInsets.all(22),
+          child: SkipButton(
+            onpressed: () => skipOnBoarding(LoginView.routeName),
+          ),
         ),
         const SizedBox(height: 65),
         Row(

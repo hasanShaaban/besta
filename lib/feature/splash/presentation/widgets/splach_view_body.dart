@@ -1,6 +1,8 @@
 import 'package:besta/core/services/get_it_service.dart';
 import 'package:besta/core/utils/assets.dart';
+import 'package:besta/feature/Auth/data/repos/auth_local_data_source.dart';
 import 'package:besta/feature/Auth/presentation/views/Login_view.dart';
+import 'package:besta/feature/home/presentation/views/home_view.dart';
 import 'package:besta/feature/on_boarding/data/repos/on_boarding_local_data_source.dart';
 import 'package:besta/feature/on_boarding/presentation/on_boarding_view.dart';
 import 'package:flutter/material.dart';
@@ -14,17 +16,24 @@ class SplashViewBody extends StatefulWidget {
   State<SplashViewBody> createState() => _SplashViewBodyState();
 }
 
-class _SplashViewBodyState extends State<SplashViewBody> with TickerProviderStateMixin{
+class _SplashViewBodyState extends State<SplashViewBody>
+    with TickerProviderStateMixin {
   bool _slideLeft = false;
   bool _showText = false;
 
   final onBoardingLocalDataSource = getIt.get<OnBoardingLocalDataSource>();
+  final authLocalDataSource = getIt.get<AuthLocalDataSource>();
 
   Future<void> checkOnBoardingSeen() async {
-    final seen = await onBoardingLocalDataSource.isOnBoardingSeen();
-    if (seen) {
-      Navigator.pushReplacementNamed(context, LoginView.routeName);
-    }else {
+    final onBoardingSeen = await onBoardingLocalDataSource.isOnBoardingSeen();
+    final authSeen = await authLocalDataSource.isAuthSeen();
+    if (onBoardingSeen) {
+      if (authSeen) {
+        Navigator.pushReplacementNamed(context, HomeView.routeName);
+      } else {
+        Navigator.pushReplacementNamed(context, LoginView.routeName);
+      }
+    } else {
       Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
     }
   }
@@ -56,7 +65,8 @@ class _SplashViewBodyState extends State<SplashViewBody> with TickerProviderStat
               curve: Curves.easeInCubic,
               duration: const Duration(milliseconds: 1000),
               onEnd: () {
-                Future.delayed(const Duration(seconds: 1), () => checkOnBoardingSeen());
+                Future.delayed(
+                    const Duration(seconds: 1), () => checkOnBoardingSeen());
               },
               opacity: _showText ? 1.0 : 0.0,
               child: SvgPicture.asset(
@@ -73,7 +83,7 @@ class _SplashViewBodyState extends State<SplashViewBody> with TickerProviderStat
               image: const AssetImage(Assets.imagesLogo),
               autostart: Autostart.once,
               height: 250,
-              width: _slideLeft? 120 : 250,
+              width: _slideLeft ? 120 : 250,
               fit: BoxFit.cover,
             ),
           ),

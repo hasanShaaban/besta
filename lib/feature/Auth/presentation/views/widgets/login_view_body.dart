@@ -8,6 +8,7 @@ import 'package:besta/feature/Auth/presentation/views/widgets/custom_auth_btton.
 import 'package:besta/feature/Auth/presentation/views/widgets/custom_text_form_field.dart';
 import 'package:besta/feature/Auth/presentation/views/widgets/google_button.dart';
 import 'package:besta/feature/Auth/presentation/views/widgets/or_divider.dart';
+import 'package:besta/feature/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -39,7 +40,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                Align(
                 alignment: Alignment.topRight,
                 child: SkipButton(
-                  onpressed: (){},
+                  onpressed: (){
+                    Navigator.of(context).pushReplacementNamed(HomeView.routeName);
+                  },
                 ),
               ),
               const SizedBox(height: 70),
