@@ -26,9 +26,25 @@ class Assets {
   /// assets/icons/esta.svg
   static const String iconsEsta = "assets/icons/esta.svg";
 
+  /// Assets for iconsExpense
+  /// assets/icons/expense.svg
+  static const String iconsExpense = "assets/icons/expense.svg";
+
+  /// Assets for iconsFileInvoiceDollar
+  /// assets/icons/file-invoice-dollar.svg
+  static const String iconsFileInvoiceDollar = "assets/icons/file-invoice-dollar.svg";
+
   /// Assets for iconsGoogleIcon
   /// assets/icons/google_icon.svg
   static const String iconsGoogleIcon = "assets/icons/google_icon.svg";
+
+  /// Assets for iconsIncomes
+  /// assets/icons/incomes.svg
+  static const String iconsIncomes = "assets/icons/incomes.svg";
+
+  /// Assets for iconsList
+  /// assets/icons/list.svg
+  static const String iconsList = "assets/icons/list.svg";
 
   /// Assets for iconsPassword
   /// assets/icons/password.svg
