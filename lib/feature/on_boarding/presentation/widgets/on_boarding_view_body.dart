@@ -1,8 +1,10 @@
+import 'package:besta/core/services/get_it_service.dart';
 import 'package:besta/core/utils/app_text_style.dart';
 import 'package:besta/core/utils/assets.dart';
 import 'package:besta/core/utils/constants.dart';
 import 'package:besta/core/widgets/skip_button.dart';
 import 'package:besta/feature/Auth/presentation/views/Login_view.dart';
+import 'package:besta/feature/on_boarding/data/repos/on_boarding_local_data_source.dart';
 import 'package:besta/feature/on_boarding/presentation/widgets/animated_shape.dart';
 import 'package:besta/feature/on_boarding/presentation/widgets/on_boarding_dots_indecators.dart';
 import 'package:besta/feature/on_boarding/presentation/widgets/on_boarding_page.dart';
@@ -17,6 +19,16 @@ class OnBoardingViewBody extends StatefulWidget {
 }
 
 class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
+
+
+  final OnBoardingLocalDataSource onBoardingLocalDataSource = getIt<OnBoardingLocalDataSource>();
+
+  void skipOnBoarding(String nextPage) async{
+    await onBoardingLocalDataSource.setOnBoardingSeen();
+    Navigator.pushReplacementNamed(context, nextPage);
+  }
+
+
   final PageController _pageController = PageController();
 
   int _currentPage = 0;
@@ -43,7 +55,9 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SkipButton(),
+        SkipButton(
+          onpressed: () => skipOnBoarding(LoginView.routeName),
+        ),
         const SizedBox(height: 65),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -109,9 +123,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                       backgroundColor: AppColors.primaryColor,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(32))),
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, LoginView.routeName);
-                  },
+                  onPressed: () => skipOnBoarding(LoginView.routeName),
                   child: Text(
                     'ابدأ الأن',
                     style: AppTextStyle.cairoBold18

@@ -35,11 +35,13 @@ class _SignupViewBodyState extends State<SignupViewBody> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Row(
+              Row(
                 children: [
-                  SkipButton(),
-                  Spacer(),
-                  CustomBackButton(
+                  SkipButton(
+                    onpressed: () {},
+                  ),
+                  const Spacer(),
+                  const CustomBackButton(
                     color: AppColors.deviderColor,
                     size: 30,
                   )
@@ -70,8 +72,8 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 },
                 hintText: 'البريد الالكتروني',
                 textInputType: TextInputType.emailAddress,
-                prefexIcon:
-                    SvgPicture.asset(Assets.iconsEnvelope, width: 24, height: 22),
+                prefexIcon: SvgPicture.asset(Assets.iconsEnvelope,
+                    width: 24, height: 22),
               ),
               const SizedBox(height: 18),
               CustomTextFormField(
@@ -80,8 +82,8 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 },
                 hintText: 'كلمة المرور',
                 textInputType: TextInputType.emailAddress,
-                prefexIcon:
-                    SvgPicture.asset(Assets.iconsPassword, width: 24, height: 22),
+                prefexIcon: SvgPicture.asset(Assets.iconsPassword,
+                    width: 24, height: 22),
               ),
               const SizedBox(height: 18),
               CustomTextFormField(
@@ -90,8 +92,8 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 },
                 hintText: 'تأكيد كلمة المرور',
                 textInputType: TextInputType.emailAddress,
-                prefexIcon:
-                    SvgPicture.asset(Assets.iconsPassword, width: 24, height: 22),
+                prefexIcon: SvgPicture.asset(Assets.iconsPassword,
+                    width: 24, height: 22),
               ),
               const SizedBox(height: 10),
               AuthRedirectText(
@@ -106,11 +108,11 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 if (formKey.currentState!.validate()) {
                   formKey.currentState!.save();
                   if (confirmPassword == password) {
-                    context
-                        .read<SingupCubit>().createUserWithEmailAndPassword(email: email, password: password, name: name);
+                    context.read<SingupCubit>().createUserWithEmailAndPassword(
+                        email: email, password: password, name: name);
                   } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('كلمة المرور غير متطابقة')));
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text('كلمة المرور غير متطابقة')));
                   }
                 } else {
                   setState(() {

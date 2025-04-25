@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 
 class SkipButton extends StatelessWidget {
   const SkipButton({
-    super.key,
+    super.key, required this.onpressed,
   });
-
+  final VoidCallback onpressed;
   @override
   Widget build(BuildContext context) {
     return TextButton(
@@ -15,7 +15,7 @@ class SkipButton extends StatelessWidget {
         minimumSize: Size.zero, 
         tapTargetSize: MaterialTapTargetSize.shrinkWrap, 
       ),
-      onPressed: () {},
+      onPressed: onpressed,
       child: Text(
         'تخط',
         style: AppTextStyle.cairoRegular16.copyWith(

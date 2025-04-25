@@ -36,9 +36,11 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Align(
+               Align(
                 alignment: Alignment.topRight,
-                child: SkipButton(),
+                child: SkipButton(
+                  onpressed: (){},
+                ),
               ),
               const SizedBox(height: 70),
               const AuthHeader(

@@ -1,4 +1,7 @@
+import 'package:besta/core/services/get_it_service.dart';
 import 'package:besta/core/utils/assets.dart';
+import 'package:besta/feature/Auth/presentation/views/Login_view.dart';
+import 'package:besta/feature/on_boarding/data/repos/on_boarding_local_data_source.dart';
 import 'package:besta/feature/on_boarding/presentation/on_boarding_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -14,6 +17,18 @@ class SplashViewBody extends StatefulWidget {
 class _SplashViewBodyState extends State<SplashViewBody> with TickerProviderStateMixin{
   bool _slideLeft = false;
   bool _showText = false;
+
+  final onBoardingLocalDataSource = getIt.get<OnBoardingLocalDataSource>();
+
+  Future<void> checkOnBoardingSeen() async {
+    final seen = await onBoardingLocalDataSource.isOnBoardingSeen();
+    if (seen) {
+      Navigator.pushReplacementNamed(context, LoginView.routeName);
+    }else {
+      Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -28,6 +43,7 @@ class _SplashViewBodyState extends State<SplashViewBody> with TickerProviderStat
       });
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -40,9 +56,7 @@ class _SplashViewBodyState extends State<SplashViewBody> with TickerProviderStat
               curve: Curves.easeInCubic,
               duration: const Duration(milliseconds: 1000),
               onEnd: () {
-                Future.delayed(const Duration(seconds: 1), (){
-                  Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
-                });
+                Future.delayed(const Duration(seconds: 1), () => checkOnBoardingSeen());
               },
               opacity: _showText ? 1.0 : 0.0,
               child: SvgPicture.asset(

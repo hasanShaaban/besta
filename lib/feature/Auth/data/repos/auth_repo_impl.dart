@@ -62,7 +62,12 @@ class AuthRepoImpl extends AuthRepo {
     try {
       user = await firebaseAuthService.signInWithGoogle();
       var userEntity = UserModel.fromFirebaseUser(user);
-      await addUserData(user: userEntity);
+      var isUserExists = await dataBaseService.checkIfDataExist(path: BackendEndPoints.usersEndPoint, documentID: user.uid);
+      if(!isUserExists){
+        await addUserData(user: userEntity);
+      }else{
+        await getUserData(uid: user.uid);
+      }
       return right(userEntity);
     } catch (e) {
       deleteUser(user);
@@ -73,18 +78,20 @@ class AuthRepoImpl extends AuthRepo {
 
   Future addUserData({required UserEntity user}) async {
     await dataBaseService.addData(
-        path: BackendEndPoints.addUserData,
+        path: BackendEndPoints.usersEndPoint,
         data: user.toMap(),
         documentID: user.uID);
   }
 
   Future<UserEntity> getUserData({required String uid}) async{
-    var userData = await dataBaseService.getData(path: BackendEndPoints.getUserData, documentID: uid);
+    var userData = await dataBaseService.getData(path: BackendEndPoints.usersEndPoint, documentID: uid);
     return UserModel.fromJson(userData);
   }
 
   Future<void> deleteUser(User? user) async{
-    user ?? await firebaseAuthService.deleteUser();
+    if(user != null){
+      await firebaseAuthService.deleteUser();
+    }
   }
 
 
