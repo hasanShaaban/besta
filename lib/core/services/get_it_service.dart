@@ -13,7 +13,11 @@ final getIt = GetIt.instance;
 void setupGetit() {
   getIt.registerSingleton<FirebaseAuthService>(FirebaseAuthService());
   getIt.registerSingleton<DataBaseService>(FireStoreService());
-  getIt.registerSingleton<AuthRepo>(AuthRepoImpl(firebaseAuthService: getIt<FirebaseAuthService>(), dataBaseService: getIt<DataBaseService>()));
   getIt.registerSingleton<LocalDataBaseService>(HiveDataBaseService());
-  getIt.registerSingleton<OnBoardingLocalDataSource>(OnBoardingLocalDataSource(getIt<LocalDataBaseService>()));
+  getIt.registerSingleton<OnBoardingLocalDataSource>(
+      OnBoardingLocalDataSource(getIt<LocalDataBaseService>()));
+  getIt.registerSingleton<AuthRepo>(AuthRepoImpl(
+      firebaseAuthService: getIt<FirebaseAuthService>(),
+      dataBaseService: getIt<DataBaseService>(),
+      hiveDataBase: getIt<LocalDataBaseService>()));
 }
