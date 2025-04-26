@@ -1,4 +1,5 @@
-import 'package:besta/feature/home/presentation/views/widgets/custom_app_bar.dart';
+import 'package:besta/core/utils/constants.dart';
+import 'package:besta/feature/home/presentation/views/widgets/custom/app_bar/custom_app_bar.dart';
 import 'package:flutter/widgets.dart';
 
 class HomeViewBody extends StatefulWidget {
@@ -9,11 +10,11 @@ class HomeViewBody extends StatefulWidget {
 }
 
 class _HomeViewBodyState extends State<HomeViewBody> {
-  double appBarHeight = 180; // Start expanded
-  final double minHeight = 80; // Minimum collapsed height
-
+  static const double initAppBarHeight = 180;
+  static const double minHeight = 80;
   ScrollController scrollController = ScrollController();
 
+  double appBarHeight = initAppBarHeight; 
   @override
   void initState() {
     super.initState();
@@ -25,7 +26,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
 
     setState(() {
       // Decrease height based on scroll, but never less than minHeight
-      appBarHeight = (180 - offset).clamp(minHeight, 180);
+      appBarHeight = (initAppBarHeight - offset).clamp(minHeight, initAppBarHeight);
     });
   }
 
@@ -40,24 +41,15 @@ class _HomeViewBodyState extends State<HomeViewBody> {
     return Stack(
       children: [
         SingleChildScrollView(
+          
           controller: scrollController,
-          child: Container(height: MediaQuery.of(context).size.height + 50),
+          child: Container(
+            color: AppColors.backgroundColor,
+            height: 1000,
+          ),
         ),
         CustomAppBar(appBarHeight: appBarHeight),
       ],
     );
   }
 }
-
-
-// // This is the scrollable content
-        // Padding(
-        //   padding: EdgeInsets.only(top: appBarHeight),
-        //   child: ListView.builder(
-        //     controller: scrollController,
-        //     itemCount: 30,
-        //     itemBuilder: (context, index) => ListTile(
-        //       title: Text('عنصر رقم $index'),
-        //     ),
-        //   ),
-        // ),

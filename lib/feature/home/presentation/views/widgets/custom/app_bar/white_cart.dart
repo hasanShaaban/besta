@@ -1,6 +1,6 @@
 import 'package:besta/core/utils/assets.dart';
 import 'package:besta/core/utils/constants.dart';
-import 'package:besta/feature/home/presentation/views/widgets/white_card_data.dart';
+import 'package:besta/feature/home/presentation/views/widgets/custom/app_bar/white_card_data.dart';
 import 'package:flutter/material.dart';
 
 class WhiteCard extends StatelessWidget {
