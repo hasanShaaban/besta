@@ -1,6 +1,9 @@
 import 'package:besta/core/utils/constants.dart';
 import 'package:besta/feature/home/presentation/views/widgets/custom/app_bar/custom_app_bar.dart';
-import 'package:flutter/widgets.dart';
+import 'package:besta/feature/home/presentation/views/widgets/custom/card/custom_card.dart';
+import 'package:besta/feature/home/presentation/views/widgets/sctions_devider.dart';
+import 'package:besta/feature/home/presentation/views/widgets/today_card_empty.dart';
+import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatefulWidget {
   const HomeViewBody({super.key});
@@ -14,7 +17,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
   static const double minHeight = 80;
   ScrollController scrollController = ScrollController();
 
-  double appBarHeight = initAppBarHeight; 
+  double appBarHeight = initAppBarHeight;
   @override
   void initState() {
     super.initState();
@@ -26,7 +29,8 @@ class _HomeViewBodyState extends State<HomeViewBody> {
 
     setState(() {
       // Decrease height based on scroll, but never less than minHeight
-      appBarHeight = (initAppBarHeight - offset).clamp(minHeight, initAppBarHeight);
+      appBarHeight =
+          (initAppBarHeight - offset).clamp(minHeight, initAppBarHeight);
     });
   }
 
@@ -41,13 +45,28 @@ class _HomeViewBodyState extends State<HomeViewBody> {
     return Stack(
       children: [
         SingleChildScrollView(
-          
-          controller: scrollController,
-          child: Container(
-            color: AppColors.backgroundColor,
-            height: 1000,
-          ),
-        ),
+            controller: scrollController,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 22),
+              child: Column(
+                children: [
+                  SizedBox(height: appBarHeight + 42),
+                  const SetctionsDevider(),
+                  const SizedBox(height: 20),
+                  // ignore: prefer_const_constructors
+                  CustomCard(
+                    date: 'الأحد 25-12',
+                    width: double.infinity,
+                    height: 90,
+                    fillColor: AppColors.secondryColor,
+                    child: const TodayCardEmpty(),
+                  ),
+                  const SizedBox(
+                    height: 800,
+                  )
+                ],
+              ),
+            )),
         CustomAppBar(appBarHeight: appBarHeight),
       ],
     );
