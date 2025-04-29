@@ -38,6 +38,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: S.delegate.supportedLocales,
       locale: const Locale('ar'),
       theme: ThemeData(
+        useMaterial3: false,
           scaffoldBackgroundColor: AppColors.backgroundColor,
           colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
           fontFamily: 'Cairo'),
