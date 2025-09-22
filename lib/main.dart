@@ -13,6 +13,7 @@ import 'package:hive_flutter/adapters.dart';
 
 
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
