@@ -1,7 +1,7 @@
 import 'package:besta/core/services/get_it_service.dart';
 import 'package:besta/core/utils/assets.dart';
 import 'package:besta/feature/Auth/data/repos/auth_local_data_source.dart';
-import 'package:besta/feature/Auth/presentation/views/Login_view.dart';
+import 'package:besta/feature/Auth/presentation/views/login_view.dart';
 import 'package:besta/feature/home/presentation/views/home_view.dart';
 import 'package:besta/feature/on_boarding/data/repos/on_boarding_local_data_source.dart';
 import 'package:besta/feature/on_boarding/presentation/on_boarding_view.dart';

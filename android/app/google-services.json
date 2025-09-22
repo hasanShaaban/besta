@@ -12,7 +12,20 @@
           "package_name": "com.example.besta"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "354580440838-radro45d8j74dqu8qr5puvifqkminfoo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.besta",
+            "certificate_hash": "244865e1d36e1d1f3692dcd8e1bd62d59275296e"
+          }
+        },
+        {
+          "client_id": "354580440838-g52tn3tf1ibujpu39ftm00rd7f71g31v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCkq27NWcXeihqD_fQEBt8xmQXkABizXxU"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "354580440838-g52tn3tf1ibujpu39ftm00rd7f71g31v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "354580440838-7kr6do7pc8hcdgujjl5fvarqn3he7er3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.besta"
+              }
+            }
+          ]
         }
       }
     }

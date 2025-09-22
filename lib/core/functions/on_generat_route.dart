@@ -1,4 +1,5 @@
-import 'package:besta/feature/Auth/presentation/views/Login_view.dart';
+
+import 'package:besta/feature/Auth/presentation/views/login_view.dart';
 import 'package:besta/feature/Auth/presentation/views/signup_view.dart';
 import 'package:besta/feature/home/presentation/views/home_view.dart';
 import 'package:besta/feature/on_boarding/presentation/on_boarding_view.dart';
@@ -21,3 +22,4 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const Scaffold());
    }
 }
+

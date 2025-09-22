@@ -3,7 +3,7 @@ import 'package:besta/core/utils/app_text_style.dart';
 import 'package:besta/core/utils/assets.dart';
 import 'package:besta/core/utils/constants.dart';
 import 'package:besta/core/widgets/skip_button.dart';
-import 'package:besta/feature/Auth/presentation/views/Login_view.dart';
+import 'package:besta/feature/Auth/presentation/views/login_view.dart';
 import 'package:besta/feature/on_boarding/data/repos/on_boarding_local_data_source.dart';
 import 'package:besta/feature/on_boarding/presentation/widgets/animated_shape.dart';
 import 'package:besta/feature/on_boarding/presentation/widgets/on_boarding_dots_indecators.dart';

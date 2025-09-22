@@ -64,6 +64,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '354580440838',
     projectId: 'besta-f6f68',
     storageBucket: 'besta-f6f68.firebasestorage.app',
+    androidClientId: '354580440838-radro45d8j74dqu8qr5puvifqkminfoo.apps.googleusercontent.com',
+    iosClientId: '354580440838-7kr6do7pc8hcdgujjl5fvarqn3he7er3.apps.googleusercontent.com',
     iosBundleId: 'com.example.besta',
   );
 
@@ -73,6 +75,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '354580440838',
     projectId: 'besta-f6f68',
     storageBucket: 'besta-f6f68.firebasestorage.app',
+    androidClientId: '354580440838-radro45d8j74dqu8qr5puvifqkminfoo.apps.googleusercontent.com',
+    iosClientId: '354580440838-7kr6do7pc8hcdgujjl5fvarqn3he7er3.apps.googleusercontent.com',
     iosBundleId: 'com.example.besta',
   );
 
@@ -85,4 +89,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'besta-f6f68.firebasestorage.app',
     measurementId: 'G-K1CHC6ZH8H',
   );
+
 }
